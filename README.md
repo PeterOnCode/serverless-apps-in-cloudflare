@@ -20,8 +20,6 @@ Here is a summary of the provided text in bullet points:
     *   Create a new project using the command: `npm create cloudflare@latest`.
     *   You will be prompted to make several choices, including the project directory, application type ("Hello World" Worker), whether to use TypeScript and Git, and if you want to deploy immediately.
 
-
-
 ### 1.2 Configure a Worker
 
 *   **`wrangler.toml`:**
@@ -36,5 +34,21 @@ Here is a summary of the provided text in bullet points:
     *   **`package.json`**: Defines the npm packages and dependencies your Worker requires.
     *   **`tsconfig.json`**: Used to configure the settings for TypeScript.
 
+### 1.3 Implement Logic in Your Workers
 
+*   **Entry Point:** The core of a Cloudflare Worker is a default exported object from a file in the `src` directory (e.g., `src/index.ts`).
+
+*   **The `fetch` Method:**
+    *   This method is the primary handler that is executed whenever your Worker receives an HTTP request.
+    *   It accepts three parameters:
+        1.  `request`: An object representing the incoming HTTP request (headers, body, etc.), based on the standard Fetch API.
+        2.  `env`: An object providing access to environment variables, secrets, and other Cloudflare services like databases or queues.
+        3.  `ctx` (Execution Context): Allows you to perform actions after a response has been sent, such as using `waitUntil` to extend the Worker's execution time.
+    *   It must return a `Response` object, which is also part of the Fetch API standard.
+
+*   **Code Organization:**
+    *   There are two main approaches for structuring serverless applications:
+        *   **Multiple Workers:** Each API endpoint (e.g., `/users`, `/products`) is its own separate, focused Worker.
+        *   **Monolithic Worker:** A single Worker receives all requests and contains logic to route them to the appropriate handler internally.
+    *   The recommended approach is to start with a single, monolithic Worker and split it into multiple functions later if the application becomes too complex.
 
