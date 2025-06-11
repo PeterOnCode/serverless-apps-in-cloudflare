@@ -52,3 +52,17 @@ Here is a summary of the provided text in bullet points:
         *   **Monolithic Worker:** A single Worker receives all requests and contains logic to route them to the appropriate handler internally.
     *   The recommended approach is to start with a single, monolithic Worker and split it into multiple functions later if the application becomes too complex.
 
+### 1.4 Run Scheduled Tasks
+
+> [Products](https://developers.cloudflare.com/products/) > [Workers](https://developers.cloudflare.com/workers/) > [Configuration](https://developers.cloudflare.com/workers/configuration/) > [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)
+
+*   **Functionality:** Cloudflare Workers can run on a schedule, not just in response to HTTP requests, by using **Cron Triggers**.
+
+*   **Configuration:** Schedules are defined in the `wrangler.toml` file under a `[triggers]` section using standard cron syntax (e.g., `crons = ["*/15 * * * *"]` to run every 15 minutes).
+
+*   **Implementation:**
+    *   The code for the scheduled task is placed inside a `scheduled` function within the Worker's default export.
+    *   You can define multiple schedules. The `event.cron` property inside the function allows you to identify which specific schedule triggered the execution.
+
+*   **Versatility:** A single Worker can handle both HTTP requests (using a `fetch` function) and scheduled tasks (using a `scheduled` function) simultaneously.
+
