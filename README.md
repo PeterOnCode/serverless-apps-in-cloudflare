@@ -66,3 +66,23 @@ Here is a summary of the provided text in bullet points:
 
 *   **Versatility:** A single Worker can handle both HTTP requests (using a `fetch` function) and scheduled tasks (using a `scheduled` function) simultaneously.
 
+### 1.5 Deploy Your First Worker
+
+*   **Prerequisites:** You must have a free Cloudflare account. During signup, you will choose a unique subdomain that will be used for your development URLs.
+
+*   **Deployment Command:**
+    *   To deploy your Worker, navigate to the project's root folder and run `npm run deploy`.
+    *   This command is a shortcut for `wrangler deploy`, which is the core command-line tool for managing Cloudflare Workers.
+
+*   **First-Time Authentication:**
+    *   When you deploy for the first time, a browser window will open asking you to log in to your Cloudflare account and grant permissions.
+    *   This step is only required once; your authentication token will be saved locally for future deployments.
+
+*   **Deployment Outcome:**
+    *   After a successful deployment, the terminal will display the live URL of your Worker.
+    *   The URL follows the format: `https://{worker-name}.{your-cloudflare-subdomain}.workers.dev`.
+    *   Cloudflare automatically handles the necessary DNS and SSL certificates for this URL.
+
+*   **Important Limits:**
+    *   https://developers.cloudflare.com/pages/platform/limits/
+
