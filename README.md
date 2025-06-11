@@ -22,7 +22,19 @@ Here is a summary of the provided text in bullet points:
 
 
 
+### 1.2 Configure a Worker
 
+*   **`wrangler.toml`:**
+    *   This is the main, human-friendly configuration file for your Cloudflare Worker, using the TOML format (similar to YAML).
+    *   It contains key settings, including:
+        *   `name`: The URL-friendly name for your Worker.
+        *   `main`: The entry point file that handles incoming requests.
+        *   `compatibility_date`: Specifies the Worker's runtime version to ensure stability and prevent breakage from platform updates.
+        *   `compatibility_flags`: Allows for tweaking the runtime environment.
+
+*   **Other Important Files:**
+    *   **`package.json`**: Defines the npm packages and dependencies your Worker requires.
+    *   **`tsconfig.json`**: Used to configure the settings for TypeScript.
 
 
 
